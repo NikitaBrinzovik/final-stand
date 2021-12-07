@@ -1,0 +1,130 @@
+.wrapper {
+    width: 100vw;
+    /*height: 100vh;*/
+    background-image: url("https://images.unsplash.com/photo-1591033594798-33227a05780d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=759&q=80") ;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #107733;
+}
+
+.container {
+    padding: 50px;
+    width: 40vw;
+    margin: 0 auto;
+    min-width: 500px;
+}
+
+.currency {
+    padding: 20px 30px;
+    border: 2px solid #107733;
+    border-radius: 10px;
+    background-color: rgba(250, 239, 233, 0.65);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    flex: 1 1 auto;
+
+}
+
+.page-header {
+    margin: 15px auto;
+}
+
+.currency-names {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    overflow-x: hidden;
+}
+
+/*---------------only Currency exchange block---------------------*/
+.fields {
+    text-align: center;
+    margin-top: 30px;
+
+}
+
+.fields label {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.fields label input {
+    width: 70%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 20px;
+    border: 2px solid #107733;
+    background-color: rgba(229, 229, 229, 0.78);
+    text-align: center;
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    place-content: center;
+    margin: 40px auto;
+    color: #012a0f;
+}
+
+/*------------------------- only Currency Desk block------------------*/
+
+.currency-list {
+    margin: 0 auto;
+    max-width: 70%;
+    max-height: 70%;
+}
+
+li {
+    color: #001707;
+    list-style-type: circle;
+    display: flex;
+    justify-content: space-around;
+}
+
+/*-----------------------BUTTONS--------------------------*/
+.button {
+    display: block;
+    width: 50%;
+    margin: 10px auto;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 2px solid #107733;
+    cursor: pointer;
+}
+
+.redirect {
+    background-color: rgba(118, 231, 156, 0.16);
+    margin-top: 20%;
+}
+
+.see-result {
+    background-color: rgba(250, 235, 215, 0.53);
+    margin-top: 5%;
+}
+
+/*----------slide-------------r*/
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(16, 119, 51, 0.55);
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #107733;
+}
+
+/*---------------------------errors---------------------*/
+.invalid-path {
+    text-align: center;
+    font-size: 70px;
+    color: #d3e8da;
+}
