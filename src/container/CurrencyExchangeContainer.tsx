@@ -2,7 +2,7 @@ import React, { FC, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { CurrencyWithKeyType } from '../redux/actions';
+import { CurrencyWithKeyType } from '../redux/redux-types';
 import { selectValutes } from '../redux/selectors';
 import { getCurrencyTC } from '../redux/thunk';
 

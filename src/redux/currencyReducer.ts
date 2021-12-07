@@ -1,5 +1,8 @@
-import { ACTIONS_TYPE, CurrencyReducersTypes, CurrencyWithKeyType } from './actions';
+import { ACTIONS_TYPE } from '../enum/action-types';
 
+import { CurrencyReducersTypes, InitialStateType } from './redux-types';
+
+const { SET_CURRENCY } = ACTIONS_TYPE;
 const initialState: InitialStateType = {
   valutes: null,
 };
@@ -9,7 +12,7 @@ export const currencyReducer = (
   state = initialState,
 ): InitialStateType => {
   switch (action?.type) {
-    case ACTIONS_TYPE.SET_CURRENCY: {
+    case SET_CURRENCY: {
       return {
         ...state,
         valutes: action.payload.valutes,
@@ -18,9 +21,4 @@ export const currencyReducer = (
     default:
       return state;
   }
-};
-
-// ----------types-----------
-type InitialStateType = {
-  valutes: CurrencyWithKeyType | null;
 };

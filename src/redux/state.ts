@@ -1,8 +1,8 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import thunkMiddleware, { ThunkAction } from 'redux-thunk';
 
-import { CurrencyReducersTypes } from './actions';
 import { currencyReducer } from './currencyReducer';
+import { CurrencyReducersTypes } from './redux-types';
 
 const reducers = combineReducers({
   currency: currencyReducer,

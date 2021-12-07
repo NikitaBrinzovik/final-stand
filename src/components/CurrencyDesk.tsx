@@ -1,10 +1,10 @@
 import React from 'react';
 
-// test
 import { useNavigate } from 'react-router-dom';
 
+import { ROUND_TO_TWO } from '../constants/constants';
 import { Path } from '../enum/Path';
-import { CurrencyWithKeyType } from '../redux/actions';
+import { CurrencyWithKeyType } from '../redux/redux-types';
 
 const CurrencyDesk: React.FC<CurrencyExchangePropsType> = ({ valutes }) => {
   const { Home } = Path;
@@ -20,7 +20,7 @@ const CurrencyDesk: React.FC<CurrencyExchangePropsType> = ({ valutes }) => {
     const { Name, Value } = allValutes[val];
     mapedCurrencies.push(
       <li key={Name}>
-        {val} : <span>{Value.toFixed(2)} RUB</span>
+        {val} : <span>{Value.toFixed(ROUND_TO_TWO)} RUB</span>
       </li>,
     );
   }

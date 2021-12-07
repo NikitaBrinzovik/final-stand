@@ -2,80 +2,57 @@ import React, { FC, KeyboardEvent, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
+import {
+  EMPTY_STRING,
+  FIRST_ELEMENT,
+  ROUND_TO_TWO,
+  SECOND_ELEMENT,
+  SPACE,
+  THIRD_ELEMENT,
+} from '../constants/constants';
+import { KeyBordCode } from '../enum/KeyBordCode';
 import { Path } from '../enum/Path';
-import { CurrencyWithKeyType } from '../redux/actions';
+import { CurrencyWithKeyType } from '../redux/redux-types';
 import { Nullable } from '../types';
 
 const CurrencyExchange: FC<CurrencyExchangePropsType> = ({ valutes }) => {
-  const [value, setValue] = useState<string>('');
-  const [result, setResult] = useState<string>('');
+  const { PressEnter } = KeyBordCode;
+  const { Desk } = Path;
+  const [value, setValue] = useState<string>(EMPTY_STRING);
+  const [result, setResult] = useState<string>(EMPTY_STRING);
   const redirect = useNavigate();
 
-  const { Desk } = Path;
-
   const strParser = (str: string): ParserReturnType => {
-    const arrStr = str.split(' ').filter(el => el !== 'in');
+    const arrStr = str.split(SPACE).filter(el => el !== 'in');
     return {
-      sumToExchange: arrStr[0],
-      originalValute: arrStr[1],
-      resultValute: arrStr[2],
+      sumToExchange: arrStr[FIRST_ELEMENT],
+      originalValute: arrStr[SECOND_ELEMENT],
+      resultValute: arrStr[THIRD_ELEMENT],
     };
   };
 
   const onClickResult = (): Nullable<any> => {
     const values = strParser(value);
-    let abroadCurrencyRate = 0;
+    let abroadCurrencyRate;
 
     if (valutes) {
-      /**
-       * какой тип возврата у этой функции?? надо будет потом исправить и возврат родительской ф.
-       */
-      const catcher = (): boolean => {
-        /**
-         * привести к булеву через !!
-         */
-        const rule0: boolean = !!(
-          values.resultValute &&
-          values.originalValute &&
-          values.sumToExchange
-        );
-        const rule1: boolean = Object.keys(valutes).some(
-          v => v === values.resultValute?.toUpperCase(),
-        );
-        const rule2: boolean = Object.keys(valutes).some(
-          v => v === values.originalValute?.toUpperCase(),
-        );
-        const rule3: boolean = values.resultValute === 'rub';
-        const rule4: boolean = values.originalValute === 'rub';
-        const rule5: boolean = values.resultValute !== values.originalValute;
-        return rule0 && rule5 && (rule1 || rule3) && (rule2 || rule4);
-      };
+      setResult(EMPTY_STRING);
 
-      if (!catcher()) {
-        /**
-         * Заменить алерт Hа всплывашку
-         */
-        // eslint-disable-next-line
-        alert('Invalid values. Try to type this:"15 usd in rub".');
-        setResult('');
+      if (values.resultValute === 'rub') {
+        abroadCurrencyRate = valutes[values.originalValute?.toUpperCase()].Value;
       } else {
-        if (values.resultValute === 'rub') {
-          abroadCurrencyRate = valutes[values.originalValute?.toUpperCase()].Value;
-        } else {
-          abroadCurrencyRate = valutes[values.resultValute?.toUpperCase()].Value;
-        }
-
-        const calculatedValute =
-          values.originalValute === 'rub'
-            ? (+Number(values.sumToExchange) / abroadCurrencyRate).toFixed(2)
-            : (+Number(values.sumToExchange) * abroadCurrencyRate).toFixed(2);
-        setResult(calculatedValute);
+        abroadCurrencyRate = valutes[values.resultValute?.toUpperCase()].Value;
       }
+      const calculatedValute =
+        values.originalValute === 'rub'
+          ? (+Number(values.sumToExchange) / abroadCurrencyRate).toFixed(ROUND_TO_TWO)
+          : (+Number(values.sumToExchange) * abroadCurrencyRate).toFixed(ROUND_TO_TWO);
+      setResult(calculatedValute);
     }
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
-    if (e.code === 'Enter') {
+    if (e.code === PressEnter) {
       onClickResult();
     }
   };
