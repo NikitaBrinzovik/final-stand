@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import './styles/App.css';
 import CurrencyDesk from './components/CurrencyDesk';
-import CurrencyExchange from './components/CurrencyExchange';
+import CurrencyExchange2 from './components/CurrencyExchange2';
 import { CurrencyContainer } from './container/CurrencyExchangeContainer';
 import { Path } from './enum/Path';
 import reportWebVitals from './reportWebVitals';
@@ -19,7 +19,7 @@ export const App: FC = (): ReturnComponentType => {
         <Routes>
           <Route
             path={Home}
-            element={<CurrencyContainer UniversalComponent={CurrencyExchange} />}
+            element={<CurrencyContainer UniversalComponent={CurrencyExchange2} />}
           />
           <Route
             path={Desk}

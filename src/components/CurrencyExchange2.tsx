@@ -12,7 +12,7 @@ import { Path } from '../enum/Path';
 import { CurrencyWithKeyType } from '../redux/actions';
 import { Nullable } from '../types';
 
-const CurrencyExchange: FC<CurrencyExchangePropsType> = ({ valutes }) => {
+const CurrencyExchange2: FC<CurrencyExchangePropsType> = ({ valutes }) => {
   const [value, setValue] = useState<string>('');
   const [result, setResult] = useState<string>('');
   const redirect = useNavigate();
@@ -116,7 +116,7 @@ const CurrencyExchange: FC<CurrencyExchangePropsType> = ({ valutes }) => {
     </div>
   );
 };
-export default CurrencyExchange;
+export default CurrencyExchange2;
 
 // --------------------types-----------
 type CurrencyExchangePropsType = {
