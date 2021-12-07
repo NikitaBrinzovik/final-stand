@@ -11,7 +11,7 @@ export const getCurrencyTC = (): AppThunkType => dispatch => {
     .getCurrency()
     .then(res => {
       dispatch(setCurrency({ usd: res.data.Valute.USD, eur: res.data.Valute.EUR }));
-      // dispatch(setCurrency(res.data.Valute));
+      dispatch(setCurrency(res.data.Valute));
       dispatch(setAppStatusAC('succeeded'));
     })
     .catch((err: AxiosError) => {

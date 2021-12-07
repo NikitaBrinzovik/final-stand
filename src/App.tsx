@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 
+import './styles/App.css';
 import CurrencyDesk from './components/CurrencyDesk';
 import CurrencyExchange from './components/CurrencyExchange';
 import { CurrencyContainer } from './container/CurrencyExchangeContainer';
